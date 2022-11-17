@@ -13,10 +13,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    //app.UseSwaggerUI(x => { x.SwaggerEndpoint("v1/swagger.yaml", "Zeipt dashboard"); });
-    //app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.yaml", "Zeipt Dashboard API"); });
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.yaml", "418 API"); });
+    //app.UseSwaggerUI();
+
 }
+
 
 app.UseHttpsRedirection();
 

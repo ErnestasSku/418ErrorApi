@@ -1,5 +1,9 @@
 ﻿namespace _418ErrorAPI.Models;
 
+using Microsoft.AspNetCore.Mvc;
+using System.Runtime.Serialization;
+
+[DataContract]
 public class Business
 {
     //PK
