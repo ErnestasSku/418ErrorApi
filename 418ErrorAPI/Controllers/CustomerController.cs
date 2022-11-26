@@ -9,10 +9,11 @@ using _418ErrorAPI.Models;
 public class CustomerController : ControllerBase
 {
     [HttpPut("actions/create")]
-    public ActionResult Put(string BusinessId, string Details, string Name, string Surname, string Address, string Phone, string Email, string Password)
+    public ActionResult<Customer> Put(string BusinessId, string Details, string Name, string Surname, string Address, string Phone, string Email, string Password)
     {
         var newCustomer = new Customer
         {
+            UserId = new System.Random().Next().ToString(),
             BusinessId = BusinessId,
             Details = Details,
             Name = Name,
@@ -22,7 +23,7 @@ public class CustomerController : ControllerBase
             Email = Email,
             Password = Password
         };
-        return Ok();
+        return Ok(newCustomer);
     }
 
     //[ProducesResponseType(StatusCodes.Status200OK)]
@@ -30,7 +31,7 @@ public class CustomerController : ControllerBase
     //[ProducesResponseType(StatusCodes.Status404NotFound)]
     //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [HttpDelete("{userId}/actions/delete")]
-    public IActionResult Delete([FromRoute] string userId)
+    public ActionResult Delete([FromRoute] string userId)
     {
         return Ok();
     }

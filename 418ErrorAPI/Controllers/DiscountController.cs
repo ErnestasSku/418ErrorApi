@@ -6,11 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("[controller]")]
-public class DiscountController: ControllerBase
+public class DiscountController : ControllerBase
 {
-    [HttpGet("Not_implemented_yet")]
-    public void NotImplemented()
-    {
+    [HttpPut("actions/create")]
+    public ActionResult<Discount> put(String BusinessId, DateTime StartDate, DateTime EndDate, DiscountType DiscountType, double Value) 
+    {  
+        var discount = new Discount
+        {
+            DisountId = new Random().Next().ToString(),
+            BusinessId = BusinessId,
+            StartDate = StartDate,
+            EndDate = EndDate,
+            ValueType = DiscountType,
+            Value = Value
+        };
 
+        return Ok(discount);
     }
+
 }
