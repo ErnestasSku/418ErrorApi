@@ -11,24 +11,24 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.DocumentFilter<AddSchemaFilter<Business>>();
-    options.DocumentFilter<AddSchemaFilter<Customer>>();
-    options.DocumentFilter<AddSchemaFilter<Discount>>();
-    options.DocumentFilter<AddSchemaFilter<Employee>>();
-    options.DocumentFilter<AddSchemaFilter<Loyalty>>();
-    options.DocumentFilter<AddSchemaFilter<Order>>();
-    options.DocumentFilter<AddSchemaFilter<OrderItem>>();
-    options.DocumentFilter<AddSchemaFilter<Product>>();
-    options.DocumentFilter<AddSchemaFilter<PromoCode>>();
-    options.DocumentFilter<AddSchemaFilter<Refund>>();
-    options.DocumentFilter<AddSchemaFilter<Report>>();
-    options.DocumentFilter<AddSchemaFilter<Role>>();
-    options.DocumentFilter<AddSchemaFilter<Storage>>();
-    options.DocumentFilter<AddSchemaFilter<StorageItem>>();
-    options.DocumentFilter<AddSchemaFilter<Tax>>();
-    options.DocumentFilter<AddSchemaFilter<TaxProduct>>();
-    options.DocumentFilter<AddSchemaFilter<TimeTable>>();
-    options.DocumentFilter<AddSchemaFilter<UserLoyalty>>();
+    //options.DocumentFilter<AddSchemaFilter<Business>>();
+    //options.DocumentFilter<AddSchemaFilter<Customer>>();
+    //options.DocumentFilter<AddSchemaFilter<Discount>>();
+    //options.DocumentFilter<AddSchemaFilter<Employee>>();
+    //options.DocumentFilter<AddSchemaFilter<Loyalty>>();
+    //options.DocumentFilter<AddSchemaFilter<Order>>();
+    //options.DocumentFilter<AddSchemaFilter<OrderItem>>();
+    //options.DocumentFilter<AddSchemaFilter<Product>>();
+    //options.DocumentFilter<AddSchemaFilter<PromoCode>>();
+    //options.DocumentFilter<AddSchemaFilter<Refund>>();
+    //options.DocumentFilter<AddSchemaFilter<Report>>();
+    //options.DocumentFilter<AddSchemaFilter<Role>>();
+    //options.DocumentFilter<AddSchemaFilter<Storage>>();
+    //options.DocumentFilter<AddSchemaFilter<StorageItem>>();
+    //options.DocumentFilter<AddSchemaFilter<Tax>>();
+    //options.DocumentFilter<AddSchemaFilter<TaxProduct>>();
+    //options.DocumentFilter<AddSchemaFilter<TimeTable>>();
+    //options.DocumentFilter<AddSchemaFilter<UserLoyalty>>();
 
 });
 

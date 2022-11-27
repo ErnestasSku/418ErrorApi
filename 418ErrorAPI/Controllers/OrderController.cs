@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 [Route("[controller]")]
 public class OrderController : ControllerBase
 {
-    [HttpPatch("{oderId}/actions/applypromocode")]
+    [HttpPatch("{orderId}/actions/applypromocode")]
     public ActionResult applyPromoCode([FromRoute] string orderId)
     {
         var order = new Order { OrderId = orderId };
@@ -19,9 +19,9 @@ public class OrderController : ControllerBase
     [ProducesResponseType(typeof(int), 200)]
     [ProducesResponseType(typeof(string), 400)]
     [ProducesResponseType(typeof(string), 404)]
-    public ActionResult<int> refund([FromRoute] string oderId)
+    public ActionResult<int> refund([FromRoute] string orderId)
     {
-        var order = new Order { OrderId = oderId, Status = OrderStatus.Pending };
+        var order = new Order { OrderId = orderId, Status = OrderStatus.Pending };
         return Ok(order.Status);
     }
 

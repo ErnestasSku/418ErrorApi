@@ -18,7 +18,7 @@ public class PromoCodeController: ControllerBase
     }
 
     [HttpPost("{PromoCodeId}/actions/delete")]
-    public ActionResult deletePromoCode([FromRoute] string PromoCOdeId)
+    public ActionResult deletePromoCode([FromRoute] string PromoCodeId)
     {
         return Ok();
     }

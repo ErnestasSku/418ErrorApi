@@ -30,11 +30,11 @@ public class EmployeeController : ControllerBase
      }
 
     [HttpPut("{employeeId}/actions/assignRole/{roleId}")]
-    public ActionResult<Employee> PutRole([FromRoute] string EmployeeId, [FromRoute] string RoleId)
+    public ActionResult<Employee> PutRole([FromRoute] string employeeId, [FromRoute] string roleId)
     {
         //TODO: find the employee with Id,
-        var employee = new Employee { EmployeeId = EmployeeId };
-        employee.RoleId = RoleId;
+        var employee = new Employee { EmployeeId = employeeId };
+        employee.RoleId = roleId;
         return Ok(employee);
     }
 
