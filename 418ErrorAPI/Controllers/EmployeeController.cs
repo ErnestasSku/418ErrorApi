@@ -8,6 +8,8 @@ using _418ErrorAPI.Models;
 public class EmployeeController : ControllerBase
 {
     [HttpPut("actions/create")]
+    [ProducesResponseType(typeof(Employee), 200)]
+    [ProducesResponseType(typeof(string), 400)]
     private ActionResult<Employee> Put(string RoleId, string BusinessId, string Details, string Name, string Surname, string Address, string Phone, string Email, string Password)
     {
         var newEmployee = 
@@ -36,8 +38,6 @@ public class EmployeeController : ControllerBase
         return Ok(employee);
     }
 
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpDelete("{employeeId}/actions/delete")]
     public ActionResult Delete([FromRoute] string employeeId)
     {

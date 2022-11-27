@@ -9,6 +9,8 @@ using _418ErrorAPI.Models;
 public class TimetableController : ControllerBase
 {
     [HttpPut("actions/create")]
+    [ProducesResponseType(typeof(TimeTable), 200)]
+    [ProducesResponseType(typeof(string), 400)]
     public ActionResult<TimeTable> Put(string BusinessId, string UserId, string Name, string Conditions)
     {
         return Ok(
@@ -22,6 +24,9 @@ public class TimetableController : ControllerBase
     }
 
     [HttpPatch("{timetableId}/actions/update")]
+    [ProducesResponseType(typeof(TimeTable), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 404)]
     public ActionResult<TimeTable> patch(string Name, string Conditions)
     {
         return Ok(

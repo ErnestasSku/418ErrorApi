@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 [Route("[controller]")]
 public class UserLoyaltyController: ControllerBase
 {
-    [HttpGet("Not_implemented_yet")]
-    public void NotImplemented()
+    [HttpPut("actions/crate")]
+    [ProducesResponseType(typeof(UserLoyalty), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    public ActionResult<UserLoyalty> createUserLoyalty(string userId, string loyaltyId, DateTime startDate, DateTime endDate)
     {
-
+        return Ok();
     }
 }

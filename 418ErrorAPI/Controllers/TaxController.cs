@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 [Route("[controller]")]
 public class TaxController: ControllerBase
 {
-    [HttpGet("Not_implemented_yet")]
-    public void NotImplemented()
+    [HttpPut("actions/create")]
+    [ProducesResponseType(typeof(Tax), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    public ActionResult<Tax> createTax(string businessId, string productId, string type, string conditions)
     {
-
+        return Ok();
     }
 }

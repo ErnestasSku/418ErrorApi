@@ -9,7 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 public class RoleController: ControllerBase
 {
     [HttpPut("actions/create")]
-    public ActionResult Put(string BusinessId, string Title, string Description)
+    [ProducesResponseType(typeof(Role), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 404)]
+    public ActionResult<Role> Put(string BusinessId, string Title, string Description)
     {
         var newRole = new Role { BusinessId = BusinessId, Title = Title, Description = Description };
         return Ok();

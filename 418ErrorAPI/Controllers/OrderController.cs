@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("[controller]")]
-public class OrderController: ControllerBase
+public class OrderController : ControllerBase
 {
     [HttpPatch("{oderId}/actions/applypromocode")]
     public ActionResult applyPromoCode([FromRoute] string orderId)
@@ -16,6 +16,9 @@ public class OrderController: ControllerBase
     }
 
     [HttpPatch("{orderId}/actions/refund")]
+    [ProducesResponseType(typeof(int), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 404)]
     public ActionResult<int> refund([FromRoute] string oderId)
     {
         var order = new Order { OrderId = oderId, Status = OrderStatus.Pending };
@@ -30,18 +33,24 @@ public class OrderController: ControllerBase
     }
 
     [HttpPost("{orderId}/actions/addProduct/{productId}")]
+    [ProducesResponseType(typeof(List<Product>), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 404)]
     public ActionResult<IEnumerable<Product>> addProduct([FromRoute] string orderId, [FromRoute] string productId)
     {
         var order = new Order { OrderId = orderId };
         Product product = new Product { ProductId = productId };
-    
+
         IEnumerable<Product> products = new List<Product> { product };
         return Ok(products);
-        
+
     }
 
     [HttpPost("{orderId}/actions/update")]
-    public ActionResult<Order> update([FromRoute ] string orderId, string SellerId, string PromoCodeId, DateTime Date, string Details, OrderStatus Status, string Dimmensions, string discountId)
+    [ProducesResponseType(typeof(Order), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 404)]
+    public ActionResult<Order> update([FromRoute] string orderId, string SellerId, string PromoCodeId, DateTime Date, string Details, OrderStatus Status, string Dimmensions, string discountId)
     {
         var order = new Order
         {
@@ -63,12 +72,47 @@ public class OrderController: ControllerBase
     [ProducesResponseType(typeof(List<Product>), 200)]
     [ProducesResponseType(typeof(string), 400)]
     [ProducesResponseType(typeof(string), 404)]
-    public ActionResult<List<Product>> discount ([FromRoute] string orderId, [FromRoute] string discountId)
+    public ActionResult<List<Product>> discount([FromRoute] string orderId, [FromRoute] string discountId)
     {
-        //Nothing much to write here without real database.
         List<Product> products = new List<Product>();
         return Ok(products);
     }
 
+    [HttpPost("{orderId}/actions/removeDiscount/{discountId}")]
+    [ProducesResponseType(typeof(List<Product>), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 404)]
+    public ActionResult<List<Product>> removeDiscount([FromRoute] string orderId, [FromRoute] string discountId)
+    {
+        return Ok();
+    }
 
+    [HttpPost("{orderId}/actions/changeStatus/awaitingPayment")]
+    [ProducesResponseType(typeof(Order), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 404)]
+    public ActionResult<Order> changeStatus([FromRoute] string orderId)
+    {
+        return Ok();
+    }
+
+    [HttpPost("{orderId}/actions/setPaymentMethod/{paymentMethod}")]
+    [ProducesResponseType(typeof(string), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    [ProducesResponseType(typeof(string), 404)]
+    public ActionResult<string> setPaymentMethod([FromRoute] string orderId, [FromRoute] string paymentMethod)
+    {
+        return Ok();
+    }
+
+    [HttpPost("{orderId}/actions/deleteProduct/{orderItemId}")]
+    public ActionResult deleteProduct([FromRoute] string orderId, [FromRoute] string orderItemId)
+    {
+        return Ok();
+    }
+
+
+    /// order/{orderId}/actions/setPaymentMethod/cash
+    /// order/{orderId}/actions/setPaymentMethod/card 
+    /// /order/{orderId}/actions/changeStatus/CancelledByCustomer 
 }

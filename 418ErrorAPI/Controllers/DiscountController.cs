@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 public class DiscountController : ControllerBase
 {
     [HttpPut("actions/create")]
-    public ActionResult<Discount> put(String BusinessId, DateTime StartDate, DateTime EndDate, DiscountType DiscountType, double Value) 
+    [ProducesResponseType(typeof(Discount), 200)]
+    [ProducesResponseType(typeof(string), 400)]
+    public ActionResult<Discount> put(string BusinessId, DateTime StartDate, DateTime EndDate, DiscountType DiscountType, double Value) 
     {  
         var discount = new Discount
         {
